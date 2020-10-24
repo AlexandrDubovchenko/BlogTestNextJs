@@ -1,15 +1,16 @@
-import Link from 'next/link'
 import Layout from '../components/Layout'
+import List from '../components/List'
+import { useSelector } from 'react-redux';
+import { Post, State } from '../interfaces';
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+const HomePage = () => {
+  const posts: Post[] = useSelector<State, Post[]>((state): Post[] => state.posts);
+  return (
+    <Layout title="Blog | Main Page">
+      <h1>Posts List</h1>
+      <List posts={posts} />
+    </Layout>
+  )
+}
 
-export default IndexPage
+export default HomePage

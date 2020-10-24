@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
+import { Header, Wrapper, StyledLink, GlobalStyle, Title } from './StyledComponents'
 
 type Props = {
   children?: ReactNode
@@ -8,34 +9,31 @@ type Props = {
 }
 
 const Layout = ({ children, title = 'This is the default title' }: Props) => (
-  <div>
+  <>
+    <GlobalStyle />
     <Head>
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <header>
-      <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>{' '}
+    <Header>
+      <Wrapper>
+        <nav>
+          <Link href="/">
+            <StyledLink>Home</StyledLink>
+          </Link>{' '}
         |{' '}
-        <Link href="/about">
-          <a>About</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/users">
-          <a>Users List</a>
-        </Link>{' '}
-        | <a href="/api/users">Users API</a>
-      </nav>
-    </header>
-    {children}
-    <footer>
-      <hr />
-      <span>I'm here to stay (Footer)</span>
-    </footer>
-  </div>
+          <Link href="/new">
+            <StyledLink>Create Post</StyledLink>
+          </Link>{' '}
+        </nav>
+        <Title color="palevioletred">Blog</Title>
+      </Wrapper>
+    </Header>
+    <Wrapper>
+      {children}
+    </Wrapper>
+  </>
 )
 
 export default Layout

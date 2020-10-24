@@ -1,19 +1,20 @@
 import * as React from 'react'
 import ListItem from './ListItem'
-import { User } from '../interfaces'
+import { Post } from '../interfaces'
+import { StyledList, StyledListItem } from './StyledComponents'
 
 type Props = {
-  items: User[]
+  posts: Post[]
 }
 
-const List = ({ items }: Props) => (
-  <ul>
-    {items.map((item) => (
-      <li key={item.id}>
-        <ListItem data={item} />
-      </li>
+const List = ({ posts }: Props) => (
+  <StyledList>
+    {posts.map((post) => (
+      <StyledListItem key={post.id}>
+        <ListItem post={post} />
+      </StyledListItem>
     ))}
-  </ul>
+  </StyledList>
 )
 
 export default List

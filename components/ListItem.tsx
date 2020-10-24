@@ -1,17 +1,21 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { User } from '../interfaces'
+import { Post } from '../interfaces'
+import { Description, CardTitle, StyledLink } from './StyledComponents'
 
 type Props = {
-  data: User
+  post: Post
 }
 
-const ListItem = ({ data }: Props) => (
-  <Link href="/users/[id]" as={`/users/${data.id}`}>
-    <a>
-      {data.id}: {data.name}
-    </a>
+const ListItem = ({ post }: Props) => (
+  <Link href="/[id]" as={`/${post.id}`}>
+    <StyledLink>
+      <CardTitle>{post.title}</CardTitle>
+      <Description>
+        {post.body}
+      </Description>
+    </StyledLink>
   </Link>
 )
 
